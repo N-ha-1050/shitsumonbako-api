@@ -15,3 +15,10 @@ class Question(models.Model):
 
     class Meta:
         ordering = ['createdAt']
+
+    def report(self):
+        self.countReported += 1
+        if self.countReported > 10:
+            self.isVisible = False
+            #self.delete()
+        self.save()

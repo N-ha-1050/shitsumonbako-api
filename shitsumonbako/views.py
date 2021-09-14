@@ -1,3 +1,4 @@
+from rest_framework.serializers import Serializer
 from shitsumonbako import serializers
 from shitsumonbako.permissions import IsToUserOrReadOnly
 from django.contrib.auth.models import User
@@ -12,6 +13,7 @@ from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
+from rest_framework import status
 
 
 @api_view(['GET'])
@@ -31,6 +33,17 @@ class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsToUserOrReadOnly]
+
+
+class QuestionReport(generics.GenericAPIView):
+    queryset = Question.objects.all()
+    #serializer_class = QuestionSerializer
+
+    def get(self, request, *args, **kwargs):
+        question = self.get_object()
+        question.report()
+        serializer = QuestionSerializer(question)
+        return Response(serializer.data)
 
 
 class UserList(generics.ListAPIView):
