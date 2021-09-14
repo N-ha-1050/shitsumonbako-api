@@ -1,3 +1,5 @@
+from shitsumonbako import serializers
+from shitsumonbako.permissions import IsToUserOrReadOnly
 from django.contrib.auth.models import User
 from django.db import models
 from django.shortcuts import render
@@ -5,8 +7,19 @@ from django.shortcuts import render
 # Create your views here.
 from shitsumonbako.models import Question
 from shitsumonbako.serializers import QuestionSerializer, UserSerializer
-from rest_framework import generics
+from rest_framework import generics, permissions
 from django.contrib.auth.models import User
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+
+
+@api_view(['GET'])
+def api_root(request, format=None):
+    return Response({
+        'users': reverse('user-list', request=request, format=format),
+        'questions': reverse('question-list', request=request, format=format)
+    })
 
 
 class QuestionList(generics.ListCreateAPIView):
@@ -17,6 +30,7 @@ class QuestionList(generics.ListCreateAPIView):
 class QuestionDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsToUserOrReadOnly]
 
 
 class UserList(generics.ListAPIView):
@@ -27,3 +41,13 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+
+
+class UserQuestionList(generics.ListAPIView):
+    queryset = User.objects.all()
+
+    def get(self, request, *args, **kwargs):
+        user = self.get_object()
+        questions = Question.objects.filter(toUser=user)
+        serializer = QuestionSerializer(questions, many=True)
+        return Response(serializer.data)
