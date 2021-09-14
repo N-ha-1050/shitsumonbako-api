@@ -6,6 +6,8 @@ from rest_framework.urlpatterns import format_suffix_patterns
 urlpatterns = [
     path('questions/', views.QuestionList.as_view()),
     path('questions/<int:pk>/', views.QuestionDetail.as_view()),
+    path('users/', views.UserList.as_view()),
+    path('users/<int:pk>/', views.UserDetail.as_view()),
 ]
 
 
