@@ -22,3 +22,6 @@ class Question(models.Model):
             self.isVisible = False
             #self.delete()
         self.save()
+
+    def __str__(self):
+        return self.body
