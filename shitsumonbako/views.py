@@ -1,7 +1,3 @@
-from rest_framework.serializers import Serializer
-from shitsumonbako import serializers
-from shitsumonbako.permissions import IsToUserOrReadOnly
-from django.contrib.auth.models import User
 from django.db import models
 from django.shortcuts import render
 
@@ -13,7 +9,8 @@ from django.contrib.auth.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
-from rest_framework import status
+from shitsumonbako.permissions import IsToUserOrReadOnly
+from django.contrib.auth.models import User
 
 
 @api_view(['GET'])
