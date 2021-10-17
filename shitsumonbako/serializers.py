@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
-        fields = ['id', 'author', 'body', 'answer', 'countReported', 'isPinned', 'isVisible', 'toUser']#['toUser']
+        fields = ['id', 'author', 'body', 'answer', 'countReported', 'isPinned', 'isVisible', 'toUser']
 
 
 class UserSerializer(serializers.ModelSerializer):
