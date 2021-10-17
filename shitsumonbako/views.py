@@ -46,7 +46,7 @@ class QuestionReport(generics.GenericAPIView):
         return Response(serializer.data)
 
 
-class UserList(generics.ListCreateAPIView):
+class UserList(generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticated]
     queryset = User.objects.all()
     serializer_class = UserSerializer
