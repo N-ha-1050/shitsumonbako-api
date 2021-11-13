@@ -86,20 +86,20 @@ Superuser created successfully.
 	ドメイン名、表示名をデフォルトを参考に書き換えて保存
 	間違えても削除や新規作成はせず、更新する(サイトIDを変更しないため)
 	```
-ドメイン名: 127.0.0.1:8000
-表示名: 127.0.0.1:8000
+	ドメイン名: 127.0.0.1:8000
+	表示名: 127.0.0.1:8000
 	```
 2. 外部アカウント > Social applications [/admin/socialaccount/socialapp/](http://127.0.0.1:8000/admin/socialaccount/socialapp/)
 	右上の `SOCIAL APPLICATIONを追加` から新規作成
 	プロバイダー、名前、Client id、Secret keyなどを入力、選択(GitHub、Google、Discordはこの4つ)
 	一番下のSitesで 1. で作成したサイトを `選択された sites` に移動
 	```
-プロバイダー: Google
-名前: Google
-Client id: 
-Secret id: 
-...
-Sites: 127.0.0.1:8000
+	プロバイダー: Google
+	名前: Google
+	Client id: 
+	Secret id: 
+	...
+	Sites: 127.0.0.1:8000
 	```
 	3つすべてのプロバイダーで入力
 
