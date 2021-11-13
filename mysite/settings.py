@@ -19,9 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # 環境変数取得
 env = environ.Env()
-READ_ENV_FILE = env.bool('DJANGO_READ_ENV_FILE', default=False)
-if READ_ENV_FILE:
-    env.read_env(os.path.join(BASE_DIR,'.env'))
+env.read_env(os.path.join(BASE_DIR,'.env'))
 
 
 # Quick-start development settings - unsuitable for production
@@ -163,8 +161,8 @@ REST_FRAMEWORK = {
     ),
 }
 
-# 1:example, 2:127.0.0.1
-SITE_ID = 2
+# サイトID
+SITE_ID = 1
 
 REST_USE_JWT = True
 
