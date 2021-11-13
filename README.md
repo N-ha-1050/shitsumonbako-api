@@ -77,21 +77,27 @@ Superuser created successfully.
 ```
 で完了
 
-[/admin](http://127.0.0.1:8000/admin/) にログイン
+[/admin/](http://127.0.0.1:8000/admin/) にログイン
 
 ## 初期設定
-[/admin](http://127.0.0.1:8000/admin/) にて
-1. サイト > サイト [/admin/sites/site/](http://127.0.0.1:8000/admin/sites/site/)	
+[/admin/](http://127.0.0.1:8000/admin/) にて
+1. サイト > サイト [/admin/sites/site/](http://127.0.0.1:8000/admin/sites/site/)
+
 	表示されているサイトの設定ページ [/admin/sites/site/1/change/](http://127.0.0.1:8000/admin/sites/site/1/change/)
+
 	ドメイン名、表示名をデフォルトを参考に書き換えて保存
+
 	間違えても削除や新規作成はせず、更新する(サイトIDを変更しないため)
 	```
 	ドメイン名: 127.0.0.1:8000
 	表示名: 127.0.0.1:8000
 	```
 2. 外部アカウント > Social applications [/admin/socialaccount/socialapp/](http://127.0.0.1:8000/admin/socialaccount/socialapp/)
+
 	右上の `SOCIAL APPLICATIONを追加` から新規作成
+
 	プロバイダー、名前、Client id、Secret keyなどを入力、選択(GitHub、Google、Discordはこの4つ)
+
 	一番下のSitesで 1. で作成したサイトを `選択された sites` に移動
 	```
 	プロバイダー: Google
@@ -114,7 +120,7 @@ Superuser created successfully.
 [django-allauth ドキュメント サポート済み](https://django-allauth.readthedocs.io/en/latest/overview.html#supported-providers)
 追加することも可能
 
-### Admin: [/admin](http://127.0.0.1:8000/admin/)
+### Admin: [/admin/](http://127.0.0.1:8000/admin/)
 管理者用
 
 ### Account: [/accounts/home/](http://127.0.0.1:8000/accounts/home/)
