@@ -14,28 +14,6 @@ python -m venv .venv
 .venv\Scripts\activate.bat
 ```
 
-## 環境設定
-.envファイルの作成
-```
-copy nul .env
-```
-```.env
-DEBUG=True
-SECRET_KEY=(ランダムな50文字以上の文字列)
-CALLBACK_URL_GITHUB=(URL)
-CALLBACK_URL_GOOGLE=(URL)
-CALLBACK_URL_DISCORD=(URL)
-```
-
-SECRET_KEYは以下でも取得可
-```
-python manage.py shell
->>> from django.core.management.utils import get_random_secret_key
->>> get_random_secret_key()
-(SECRET_KEY)
->>>exit()
-```
-
 ## パッケージのインストール
 ```
 python -m pip install django
@@ -48,6 +26,28 @@ python -m pip install django-environ
 または、バージョン指定済み一括
 ```
 python -m pip install -r requirements.txt
+```
+
+## 環境設定
+.envファイルの作成
+```
+copy nul .env
+```
+```.env
+DEBUG=True
+SECRET_KEY=(ランダムな50文字以上の文字列)
+CALLBACK_URL_GITHUB=http://127.0.0.1:8000/accounts/github/login/callback/
+CALLBACK_URL_GOOGLE=http://127.0.0.1:8000/accounts/google/login/callback/
+CALLBACK_URL_DISCORD=http://127.0.0.1:8000/accounts/discord/login/callback/
+```
+
+SECRET_KEYは以下の取得用関数を使用可能
+```
+python manage.py shell
+>>> from django.core.management.utils import get_random_secret_key
+>>> get_random_secret_key()
+(SECRET_KEY)
+>>>exit()
 ```
 
 ## データベースの作成
