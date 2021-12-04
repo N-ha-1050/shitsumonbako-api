@@ -9,9 +9,16 @@ cd shitsumonbako-api
 以下すべて `shitsumonbako-api` ディレクトリ内
 
 ## 仮想環境の設定
+Windows
 ```
 python -m venv .venv
 .venv\Scripts\activate.bat
+```
+
+Mac
+```
+python -m venv .venv
+. .venv/bin/activate
 ```
 
 ## パッケージのインストール
@@ -32,6 +39,10 @@ python -m pip install -r requirements.txt
 .envファイルの作成
 ```
 copy nul .env
+```
+or
+```
+touch .env
 ```
 ```.env
 DEBUG=True
@@ -66,7 +77,7 @@ python manage.py runserver
 python manage.py createsuperuser
 ```
 ```
-ユーザー名 (leave blank to use 'admin'): 
+ユーザー名 (leave blank to use 'user'): 
 メールアドレス: 
 Password:
 Password (again):
